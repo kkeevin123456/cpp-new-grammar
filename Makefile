@@ -3,8 +3,8 @@
 #  Compiler: g++ 13 | Standard: C++20
 # ============================================================
 
-CXX      := g++
-CXXFLAGS := -std=c++20 -Wall -Wextra -Wpedantic -g -Isrc -Isrc/lib
+CXX      := g++-14
+CXXFLAGS := -std=c++23 -Wall -Wextra -Wpedantic -g -Isrc -Isrc/lib
 SRCDIR   := src
 OBJDIR   := build
 TARGET   := app

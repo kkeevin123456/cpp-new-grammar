@@ -4,6 +4,7 @@
 #include <iostream>
 #include <memory>
 #include <vector>
+#include <ranges>
 #include "shape.h"
 
 class Canvas {
@@ -47,8 +48,14 @@ public:
 
 	void printAll() {
 		for (auto& d : _data) {
-			d->describe();
+			printShape(*d);
 		}
+	}
+
+	std::vector<std::string> filterNames(const double threshold) {
+		return _data | std::views::filter([threshold](const std::unique_ptr<Shape>& s) { return s->area() > threshold; })
+					 | std::views::transform([](const std::unique_ptr<Shape>& s) { return s->name(); })
+					 | std::ranges::to<std::vector>();
 	}
 };
 

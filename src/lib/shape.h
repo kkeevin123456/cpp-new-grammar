@@ -4,6 +4,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <concepts>
 
 class Shape {
 public:
@@ -57,6 +58,17 @@ public:
 
 private:
 	double base_, h_;
+};
+
+template<typename T>
+concept Describable = requires(T s) {
+	{ s.area() } -> std::floating_point;
+	{ s.describe() } -> std::same_as<void>;
+};
+
+template<Describable T>
+void printShape(const T& shape) {
+	shape.describe();
 };
 
 #endif

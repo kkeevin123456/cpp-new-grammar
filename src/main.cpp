@@ -1,18 +1,11 @@
 #include <vector>
 #include <memory>
-#include "shape.h"
-#include "canvas.h"
+#include <algorithm>
+#include <iostream>
+#include "./lib/shape.h"
+#include "./lib/canvas.h"
 
 int main() {
-    //std::vector<std::unique_ptr<Shape>> shapes;
-    //shapes.push_back(std::make_unique<Circle>(5.0));
-    //shapes.push_back(std::make_unique<Rectangle>(4.0, 6.0));
-    //shapes.push_back(std::make_unique<Triangle>(4.0, 6.0));
-
-    //for (const auto& s : shapes) {
-    //    s->describe();
-    //}
-
 	Canvas canvas_a = Canvas();
 	canvas_a.add(std::make_unique<Circle>(5.0));
 	canvas_a.add(std::make_unique<Rectangle>(4.0, 6.0));
@@ -25,6 +18,11 @@ int main() {
 	canvas_c = std::move(canvas_b);
 
 	canvas_c.printAll();
+
+	std::vector<std::string> names = canvas_c.filterNames(15);
+	std::ranges::for_each(names, [](const std::string& name) {
+		std::cout << name << "\n";
+	});
 
     return 0;
 }
