@@ -34,7 +34,7 @@ private:
 	std::vector<std::unique_ptr<Shape>> _data;
 
 	void clearAndCopy(const Canvas& canvas) {
-		_data = std::vector<std::unique_ptr<Shape>>();
+		_data.clear();
 		for (auto& d : canvas._data) {
 			_data.push_back(d->clone());
 		}
