@@ -4,7 +4,7 @@
 # ============================================================
 
 CXX      := g++
-CXXFLAGS := -std=c++20 -Wall -Wextra -Wpedantic -g
+CXXFLAGS := -std=c++20 -Wall -Wextra -Wpedantic -g -Isrc -Isrc/lib
 SRCDIR   := src
 OBJDIR   := build
 TARGET   := app
