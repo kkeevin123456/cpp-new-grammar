@@ -13,13 +13,10 @@ int main() {
     //    s->describe();
     //}
 
-	Shape *circle = new Circle(5.0), *rectangle = new Rectangle(4.0, 6.0), *triangle = new Triangle(4.0, 6.0);
-	Shape **data = new Shape*[3];
-	data[0] = circle;
-	data[1] = rectangle;
-
-	Canvas canvas_a = Canvas(data, 2);
-	canvas_a.add(triangle);
+	Canvas canvas_a = Canvas();
+	canvas_a.add(std::make_unique<Circle>(5.0));
+	canvas_a.add(std::make_unique<Rectangle>(4.0, 6.0));
+	canvas_a.add(std::make_unique<Triangle>(4.0, 6.0));
 
 	Canvas canvas_b = canvas_a;
 	canvas_a = canvas_b;
